@@ -124,13 +124,24 @@ public class SinglyLinkedList<T> {
 
 	public void reverseList() {
 		checkIfListEmpty();
-		SinglyLinkedList<T> reverseList = new SinglyLinkedList<>();
+		Node<T> rTail = this.head;
+		Node<T> rHead = null;
+		Node<T> prevNode = null;
 		while(this.head != null) {
-			reverseList.addFirst(this.head.value);
-			this.head = this.head.next;
+			if(this.head == null) {
+				rHead = this.head;
+				prevNode = this.head;
+				this.head = this.head.next;
+			} else {
+				rHead = this.head;
+				this.head = this.head.next;
+				rHead.setNext(prevNode);
+				prevNode = rHead;
+			}
 		}
-		this.head = reverseList.head;
-		this.tail = reverseList.tail;
+		this.tail = rTail;
+		this.tail.setNext(null);
+		this.head = rHead;
 	}
 
 	private Node<T> getNodeByPostion(int postion) {
