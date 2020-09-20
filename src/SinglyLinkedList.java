@@ -116,7 +116,21 @@ public class SinglyLinkedList<T> {
 		Node<T> prevNode = getNodeByPostion(position - 1);
 		T value = prevNode.next.value;
 		prevNode.setNext(prevNode.next.next);
+		if(prevNode.next == null) {
+			tail = prevNode;
+		}
 		return value;
+	}
+
+	public void reverseList() {
+		checkIfListEmpty();
+		SinglyLinkedList<T> reverseList = new SinglyLinkedList<>();
+		while(this.head != null) {
+			reverseList.addFirst(this.head.value);
+			this.head = this.head.next;
+		}
+		this.head = reverseList.head;
+		this.tail = reverseList.tail;
 	}
 
 	private Node<T> getNodeByPostion(int postion) {

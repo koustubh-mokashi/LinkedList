@@ -27,5 +27,12 @@ public class LinkedListApplication {
 		list.remove(2);
 		list.remove(1);
 		System.out.println(list);
+		list.add("raj");
+		list.add("vijay");
+		list.add("ravi");
+		System.out.println(list);
+		list.reverseList();
+		System.out.println(list);
 	}
+
 }
